@@ -1,0 +1,38 @@
+image: node:10.16.0
+
+pipelines:
+  custom:
+    deploy-to-test:
+      - step:
+          name: Deploy-Testing
+          caches:
+          - node
+          deployment: Test
+          script:
+            - apt-get update && apt-get install -y rsync
+            - npm install
+            - env >> .env
+            - rm -rf .git
+            - rm .gitignore
+            - rsync -avze ssh $BITBUCKET_CLONE_DIR $DEPLOY_USER@$DEPLOY_SERVER:/root/near2all/
+            - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "rsync -avze cp -r /root/near2all/build/ /usr/local/share/near2all/ ; pm2 reload near2all " ;
+
+    deploy-to-Production:
+      - step:
+          name: Deploy-Production
+          caches:
+          - node
+          deployment: production
+          script:
+            - apt-get update && apt-get install -y rsync
+            - npm install
+            - env >> .env
+            - rm -rf .git
+            - rm .gitignore
+            - rsync -avze ssh $BITBUCKET_CLONE_DIR $DEPLOY_USER@$DEPLOY_SERVER:/root/near2all/
+            - ssh -T $DEPLOY_USER@$DEPLOY_SERVER "rsync -avze cp -r /root/near2all/build/ /usr/local/share/near2all/ ;" ;
+      - step:
+         name: Restart server
+         trigger: manual
+         script:
+          - ssh -T $DEPLOY_USER@$DEPLOY_SERVER " pm2 reload near2all " ;
