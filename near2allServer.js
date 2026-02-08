@@ -9,6 +9,10 @@ var appSecurity = require('./controllers/appSecurityController');
 
 var routes = require('./routes/index');
 
+// Swagger documentation
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
+
 var app = express();
 
 // view engine setup
@@ -24,6 +28,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static(path.join(__dirname, '../vendor')));
 app.use('/user', express.static(path.join(__dirname, '../user')));
+
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use("/api*", appSecurity.tokenVerify);
 routes.initialize(app);
 
