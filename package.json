@@ -6,25 +6,23 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^3.1.0",
     "cookie-parser": "~1.4.4",
+    "cryptlib": "^1.0.3",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "formidable": "^1.2.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "winston": "^3.2.1",
-    "winston-daily-rotate-file": "^4.3.0"
-  },
-  "devDependencies": {
-    "async": "^3.1.0",
-    "cryptlib": "^1.0.3",
-    "crypto": "^1.0.1",
     "got": "^9.6.0",
+    "http-errors": "~1.6.3",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "mongoose": "^5.7.3",
-    "randomstring": "^1.1.5"
-  }
+    "morgan": "~1.9.1",
+    "randomstring": "^1.1.5",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.3.0"
+  },
+  "devDependencies": {}
 }
