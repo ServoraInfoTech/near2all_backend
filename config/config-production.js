@@ -31,7 +31,7 @@ exports.msg91VerifyConfig = () => {
 
 exports.dbUrl = () => {
     console.log("i am in production");
-    return 'mongodb://root:near2all1234@localhost:27017/near2all?authSource=admin';
+    return 'mongodb+srv://swarnadunaboina_db_user:92W8xFS4YRfBgYHw@cluster0.h4rx2gg.mongodb.net/?appName=near2all';
 }
 exports.msg91RetryOTP = () => {
     return {
@@ -58,4 +58,23 @@ exports.nearByDistance = () => {
 
 exports.serverUrl = () => {
     return "http://31.220.59.107:3000/";
+}
+
+// Admin Configuration
+exports.adminConfig = () => {
+    return {
+        "registrationCode": "NEAR2ALL-ADMIN-2024",
+        "role": {
+            "ADMIN": "admin",
+            "USER": "user",
+            "VENDOR": "vendor"
+        },
+        "approvalStatus": {
+            "PENDING": "pending",
+            "APPROVED": "approved",
+            "REJECTED": "rejected",
+            "FLAGGED": "flagged",
+            "HIDDEN": "hidden"
+        }
+    };
 }

@@ -31,7 +31,7 @@ exports.msg91VerifyConfig = () => {
 
 exports.dbUrl = () => {
     console.log("i am in development");
-    return 'mongodb://localhost:27017/near2all?authSource=admin';
+    return 'mongodb+srv://swarnadunaboina_db_user:92W8xFS4YRfBgYHw@cluster0.h4rx2gg.mongodb.net/?appName=near2all';
 }
 exports.msg91RetryOTP = () => {
     return {
