@@ -29,9 +29,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/vendor', express.static(path.join(__dirname, '../vendor')));
 app.use('/user', express.static(path.join(__dirname, '../user')));
 
-// Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Swagger UI (use /docs to avoid /api* token verification)
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// Apply token verification to all /api* routes
 app.use("/api*", appSecurity.tokenVerify);
 routes.initialize(app);
 

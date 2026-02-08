@@ -22,6 +22,10 @@ const options = {
         description: 'Production server'
       }
     ],
+    externalDocs: {
+      description: 'API Documentation',
+      url: 'https://near2all-backend.onrender.com/docs'
+    },
     components: {
       schemas: {
         User: {
