@@ -14,11 +14,12 @@ var config=require("./config-"+process.env.NODE_ENV+".js");
 var DBURI = config.dbUrl();
 
 
-// Create the database connection 
-mongoose.connect(DBURI,function(error){
-	if(error){
-		console.log(error);
-	}
+// Create the database connection with options for MongoDB Atlas
+mongoose.connect(DBURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).catch(error => {
+    console.log('MongoDB connection error:', error);
 }); 
 
 // CONNECTION EVENTS

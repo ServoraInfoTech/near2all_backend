@@ -31,7 +31,7 @@ exports.msg91VerifyConfig = () => {
 
 exports.dbUrl = () => {
     console.log("i am in production");
-    return 'mongodb+srv://swarnadunaboina_db_user:92W8xFS4YRfBgYHw@cluster0.h4rx2gg.mongodb.net/?appName=near2all';
+    return 'mongodb+srv://swarnadunaboina_db_user:92W8xFS4YRfBgYHw@cluster0.h4rx2gg.mongodb.net/near2all?retryWrites=true&w=majority&appName=near2all';
 }
 exports.msg91RetryOTP = () => {
     return {
